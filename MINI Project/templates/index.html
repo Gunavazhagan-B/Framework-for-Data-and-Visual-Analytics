@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disease Outbreak Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <form action="/predict" method="POST">
+        <h2>Disease Outbreak Prediction</h2>
+        <div class="row">
+            <div class="col">
+                <label>Week of Outbreak:</label>
+                <input type="number" name="week" required>
+
+                <label>District:</label>
+                <input type="text" name="district" required>
+
+                <label>Cases:</label>
+                <input type="number" name="cases" required>
+
+                <label>Deaths:</label>
+                <input type="number" name="deaths" required>
+
+                <label>Month:</label>
+                <input type="number" name="mon" required>
+
+                <label>Year:</label>
+                <input type="number" name="year" required>
+            </div>
+
+            <div class="col">
+                <label>Precipitation (mm):</label>
+                <input type="number" step="any" name="preci" required>
+
+                <label>Leaf Area Index (LAI):</label>
+                <input type="number" step="any" name="lai" required>
+
+                <label>Temperature (°C):</label>
+                <input type="number" step="any" name="temp" required>
+
+                <label>State/UT:</label>
+                <select name="state" required>
+                    {% for s in states %}
+                        <option value="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
